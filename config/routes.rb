@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  #root_to: 'expenses#index'
+  devise_for :users
+  root to: 'expenses#index'
+  #resources :users, only: [:edit, :update]
+
 end
