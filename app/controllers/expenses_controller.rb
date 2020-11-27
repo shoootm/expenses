@@ -1,4 +1,5 @@
 class ExpensesController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   def index
     @expenses = Expense.all
   end
@@ -8,6 +9,14 @@ class ExpensesController < ApplicationController
   def create
     @expense = Expense.new(expense_params)
     @expense.save
+    redirect_to action: :index
+  end
+  def edit
+    @expense = Expense.find(params[:id])
+  end
+  def update
+    @expense = Expense.find(params[:id])
+    @expense.update(expense_params)
     redirect_to action: :index
   end
   private

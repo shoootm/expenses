@@ -1,0 +1,67 @@
+<%= form_with model: @expense, url: expense_path(@expense.id) do |f| %>
+
+  <div class="field">
+    <%= f.label "収入" %><br />
+    <%= f.text_field :income, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label "食費" %><br />
+    <%= f.text_field :food_expense, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label "日用品" %><br />
+    <%= f.text_field :necessities, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label "衣服" %><br />
+    <%= f.text_field :clothes_expense, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label "美容" %><br />
+    <%= f.text_field :beauty_expense, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label "交際費" %><br />
+    <%= f.text_field :entertainment_expense, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label "医療費" %><br />
+    <%= f.text_field :medical_bill, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label "教育費" %><br />
+    <%= f.text_field :education_cost, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label "光熱費" %><br />
+    <%= f.text_field :utility_costs, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label "旅費" %><br />
+    <%= f.text_field :traveling_expense, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label "その他" %><br />
+    <%= f.text_field :other, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label "メモ" %><br />
+    <%= f.text_field :memo, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "作成" %>
+  </div>
+
+<% end %>
+
+<%= link_to "トップページ", root_path %>
