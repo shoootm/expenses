@@ -15,11 +15,21 @@ has_many :comments
 
 ## expenses テーブル
 
-| Column | Type   | Options     |
-| ------ | ------ | ----------- |
-|  | string | null: false |
-| text   | string | null: false |
-| user   | references | null: false, foreign_key: true |
+| Column                  | Type        | Options                        |
+| ----------------------- | ----------- | ------------------------------ |
+| income                  | integer     | null: false                    |
+| food_expense            | integer     |                                |
+| necessities             | integer     |                                |
+| clothes_expense         | integer     |                                |
+| beauty_expense          | integer     |                                |
+| entertainment_expense   | integer     |                                |
+| medical_bill            | integer     |                                |
+| education_cost          | integer     |                                |
+| utility_costs           | integer     |                                |
+| traveling_expense       | integer     |                                |
+| other                   | integer     |                                |
+| memo                    | text        |                                |
+| user                    | references  | null: false, foreign_key: true |
 
 
 ## association

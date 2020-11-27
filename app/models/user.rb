@@ -9,4 +9,5 @@ class User < ApplicationRecord
     validates :nickname
     validates :prefecture
   end
+  has_many :expenses
 end
