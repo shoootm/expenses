@@ -47,6 +47,7 @@
       <%= expense.memo %>
     </div>
     <%= link_to "編集", edit_expense_path(expense.id) %>
+    <%= link_to "削除", expense_path(expense.id), method: :delete %>
   <% end %>
 
 
