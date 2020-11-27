@@ -1,7 +1,51 @@
 <% if user_signed_in?%>
   <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+  <%= link_to "収支表作成", new_expense_path %>
 <% else%>
   <%= link_to "新規登録ページ", new_user_registration_path %>
   <%= link_to "ログインページ", new_user_session_path %>
 <% end %>
+
+<% @expenses.each do |expense| %>
+    <div>
+      <%= expense.user.nickname %>
+    </div>
+    <div><p>収入</p>
+      <%= expense.income %>
+    </div>
+    <div><p>食費</p>
+      <%= expense.food_expense %>
+    </div>
+    <div><p>日用品</p>
+      <%= expense.necessities %>
+    </div>
+    <div><p>衣服</p>
+      <%= expense.clothes_expense %>
+    </div>
+    <div><p>美容</p>
+      <%= expense.beauty_expense %>
+    </div>
+    <div><p>交際費</p>
+      <%= expense.entertainment_expense %>
+    </div>
+    <div><p>医療費</p>
+      <%= expense.medical_bill %>
+    </div>
+    <div><p>教育費</p>
+      <%= expense.education_cost %>
+    </div>
+    <div><p>光熱費</p>
+      <%= expense.utility_costs %>
+    </div>
+    <div><p>旅費</p>
+      <%= expense.traveling_expense %>
+    </div>
+    <div><p>その他</p>
+      <%= expense.other %>
+    </div>
+    <div><p>メモ</p>
+      <%= expense.memo %>
+    </div>
+  <% end %>
+
 
