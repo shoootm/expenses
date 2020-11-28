@@ -1,54 +1,82 @@
-<% if user_signed_in?%>
-  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-  <%= link_to "収支表作成", new_expense_path %>
-<% else%>
-  <%= link_to "新規登録ページ", new_user_registration_path %>
-  <%= link_to "ログインページ", new_user_session_path %>
-<% end %>
-
+<header class="top_page_header">
+    <div class="header_left">
+      <i class="fa fa-home"></i>
+      家計簿を記録しよう
+    </div>
+    <div class="header_right">
+      <% if user_signed_in? %>
+        マイページはこちらをクリック👉　　
+        <%= link_to "ようこそ#{current_user.nickname}さん",  class:"current_user_nickname" %>
+      <% end %>
+      <% if user_signed_in?%>
+        <%= link_to "収支表作成", new_expense_path, class:"header_link" %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"header_link" %>
+      <% else%>
+        <%= link_to "新規登録", new_user_registration_path, class:"header_link" %>
+        <%= link_to "ログイン", new_user_session_path, class:"header_link" %>
+      <% end %>
+    </div>
+</header>
+<div class="main_container">
+<div class="expense_lists">
 <% @expenses.each do |expense| %>
-    <div>
-      <%= expense.user.nickname %>
+    <div class="expense_user_name">
+      <%= "#{expense.user.nickname}さんの収支表" %>
     </div>
-    <div><p>収入</p>
-      <%= expense.income %>
+    <div class="expense_list">
+      <p class="expense_title">収入</p>
+      <p class="money"><%= "#{expense.income}円" %></p>
     </div>
-    <div><p>食費</p>
-      <%= expense.food_expense %>
+    <div class="expense_list">
+      <p class="expense_title">食費</p>
+      <p class="money"><%= "#{expense.food_expense}円"%></p>
     </div>
-    <div><p>日用品</p>
-      <%= expense.necessities %>
+    <div class="expense_list">
+      <p class="expense_title">日用品</p>
+      <p class="money"><%= "#{expense.necessities}円" %></p>
     </div>
-    <div><p>衣服</p>
-      <%= expense.clothes_expense %>
+    <div class="expense_list">
+      <p class="expense_title">衣服</p>
+      <p class="money"><%= "#{expense.clothes_expense}円" %></p>
     </div>
-    <div><p>美容</p>
-      <%= expense.beauty_expense %>
+    <div class="expense_list">
+      <p class="expense_title">美容</p>
+      <p class="money"><%= "#{expense.beauty_expense}円" %></p>
     </div>
-    <div><p>交際費</p>
-      <%= expense.entertainment_expense %>
+    <div class="expense_list">
+      <p class="expense_title">交際費</p>
+      <p class="money"><%= "#{expense.entertainment_expense}円" %></p>
     </div>
-    <div><p>医療費</p>
-      <%= expense.medical_bill %>
+    <div class="expense_list">
+      <p class="expense_title">医療費</p>
+      <p class="money"><%= "#{expense.medical_bill}円" %></p>
     </div>
-    <div><p>教育費</p>
-      <%= expense.education_cost %>
+    <div class="expense_list">
+      <p class="expense_title">教育費</p>
+      <p class="money"><%= "#{expense.education_cost}円" %></p>
     </div>
-    <div><p>光熱費</p>
-      <%= expense.utility_costs %>
+    <div class="expense_list">
+      <p class="expense_title">光熱費</p>
+      <p class="money"><%= "#{expense.utility_costs}円" %></p>
     </div>
-    <div><p>旅費</p>
-      <%= expense.traveling_expense %>
+    <div class="expense_list">
+      <p class="expense_title">旅費</p>
+      <p class="money"><%= "#{expense.traveling_expense}円" %></p>
     </div>
-    <div><p>その他</p>
-      <%= expense.other %>
+    <div class="expense_list">
+      <p class="expense_title">その他</p>
+      <p class="money"><%= "#{expense.other}円" %></p>
     </div>
-    <div><p>メモ</p>
-      <%= expense.memo %>
+    <div class="expense_memo">
+      <p class="memo_title">メモ</p>
+      <p class="memo"><%= expense.memo %></p>
     </div>
-    <%= link_to "編集", edit_expense_path(expense.id) %>
-    <%= link_to "削除", expense_path(expense.id), method: :delete %>
+    <div class="expense_btn" >
+      <%= link_to "編集", edit_expense_path(expense.id) %>
+      <%= link_to "削除", expense_path(expense.id), method: :delete %>
+    </div>
 <% end %>
-
+</div>
+</div>
 
 

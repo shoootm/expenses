@@ -1,0 +1,91 @@
+header{
+  background-color: #55c500;
+}
+.top_page_header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  width: 100%;
+}
+.header_left{
+  margin-left: 20px;
+  font-size: 40px;
+  color: white;
+}
+.header_right{
+  font-size: 15px;
+  margin-right: 20px;
+  color: white;
+}
+.current_user_nickname{
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 40px;
+  color: white;
+  font-size: 20px;
+}
+.header_link{
+  text-decoration: none;
+  margin-left: 40px;
+  color: white;
+  border:1px solid white;
+  border-radius: 10px;
+  padding: 10px;
+}
+.main_container{
+  display: flex;
+  justify-content: center;
+  background-image: url(https://cdn.pixabay.com/photo/2014/07/06/13/55/calculator-385506_1280.jpg);
+}
+.expense_lists{
+  margin-top: 100px;
+  width: 70%;
+  font-size: 25px;
+  background-color: #333;
+  border-radius: 20px;
+  background-color: #d0712f;
+  color: white;
+}
+.expense_list{
+  display: flex;
+  justify-content: space-between;
+}
+.expense_user_name{
+  text-align: center;
+  padding: 30px 0;
+  border-bottom:3px solid black ;
+  background-color: firebrick;
+
+}
+.expense_title{
+  display: inline-block;
+  margin: 40px;
+}
+.money{
+  margin: 20px;
+  padding: 20px 20px 20px 300px;
+  background-color: white;
+  color: #333;
+  border-radius: 20px;
+}
+
+.expense_memo{
+
+  margin: 20px;
+  background-color: white;
+  color: #333;
+  padding: 20px;
+  border-radius: 20px;
+}
+.memo_title{
+  border-bottom: 3px solid black ;
+}
+.memo{
+  margin-top: 10px;
+  display: inline-block;
+}
+.expense_btn{
+  float:right;
+  margin:20px ;
+}
