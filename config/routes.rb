@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root to: 'expenses#index'
   #resources :users, only: [:edit, :update]
   resources :expenses, only: [:new, :create, :edit, :update, :destroy]
+  resources :users, only: [:show]
 end
