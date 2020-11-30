@@ -11,4 +11,12 @@ class User < ApplicationRecord
   end
   has_many :expenses
   has_many :comments
+  def self.search(search)
+    if search != ""
+      User.where("prefecture LIKE(?)", "%#{search}%")
+      #@expenses = @user.expenses
+    else
+      User.all
+    end
+  end
 end
