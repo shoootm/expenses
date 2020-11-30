@@ -1,6 +1,6 @@
 class ExpensesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :set_expense, only: [:edit, :update, :destroy]
+  before_action :set_expense, only: [:edit, :update, :destroy, :show]
   def index
     @expenses = Expense.all
   end
@@ -16,6 +16,11 @@ class ExpensesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @comment = Comment.new
+    @comments = @expense.comments.includes(:user)
   end
 
   def edit

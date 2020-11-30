@@ -58,6 +58,9 @@ header{
   background-color: firebrick;
 
 }
+.expense_show_link{
+  text-decoration: none;
+}
 .expense_title{
   display: inline-block;
   margin: 40px;
