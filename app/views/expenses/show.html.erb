@@ -74,6 +74,7 @@
           <p>
             <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
             <%= comment.text %>
+            <%= link_to "削除", expense_comment_path(comment.expense_id, comment.id), method: :delete %>
           </p>
         <% end %>
       <% end %>
