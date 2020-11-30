@@ -17,10 +17,11 @@
 </header>
 <div class="main_container">
 <div class="expense_lists">
+<% unless @expenses == [] %>
 <% @expenses.each do |expense| %>
 
     <div class="expense_user_name">
-      <%= "#{expense.user.nickname}さんの収支表" %>
+      <%= link_to "#{expense.user.nickname}さんの収支表", expense_path(expense.id), class:"expense_show_link" %>
     </div>
     <div class="expense_list">
       <p class="expense_title">収入</p>
@@ -70,12 +71,8 @@
       <p class="memo_title">メモ</p>
       <p class="memo"><%= expense.memo %></p>
     </div>
-    <% if expense.user.id == current_user.id && user_path(current_user.id) %>
-    <div class="expense_btn" >
-      <%= link_to "編集", edit_expense_path(expense.id) %>
-      <%= link_to "削除", expense_path(expense.id), method: :delete %>
-    </div>
-    <% end %>
+
+<% end %>
 <% end %>
 </div>
 </div>
