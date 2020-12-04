@@ -94,3 +94,6 @@ header{
   float:right;
   margin:20px ;
 }
+div[data-checked="true"] {
+  background: #585555;
+}
