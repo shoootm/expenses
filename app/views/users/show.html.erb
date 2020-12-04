@@ -5,7 +5,7 @@
     </div>
     <div class="header_right">
       <% if user_signed_in? %>
-        <%= link_to "お気に入り一覧", expense_favorite_path(favorite.id,)%>
+        マイページはこちらをクリック👉
         <%= link_to "ようこそ#{current_user.nickname}さん", user_path(current_user.id),  class:"current_user_nickname" %>
         <%= link_to "収支表作成", new_expense_path, class:"header_link" %>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"header_link" %>
