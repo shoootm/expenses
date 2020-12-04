@@ -6,7 +6,10 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+    resource :favorites, only: %i[create destroy]
+    get :favorites, on: :collection
   end
+  #resources :favorites, only: [:show]
   get 'expenses/:id/checked', to: 'expenses#checked'
   resources :users, only: [:show]
 end

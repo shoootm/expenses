@@ -16,7 +16,6 @@ function check() {
           alert(`Error ${XHR.status}: ${XHR.statusText}`);
           return null;
         }
-        //debugger
         const item = XHR.response.expense;
         if (item.checked === true) {
           test.setAttribute("data-checked", "true");

@@ -2,7 +2,7 @@ class ExpensesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_expense, only: [:edit, :update, :destroy, :show]
   def index
-    @expenses = Expense.all
+    @expenses = Expense.all.includes(:user).recent
   end
 
   def new
@@ -58,7 +58,12 @@ class ExpensesController < ApplicationController
     item = Expense.find(params[:id])
     render json: { expense: item }
   end
-3
+
+  def favorites
+    @expenses = current_user.favorite_expenses.includes(:user).recent
+  end
+
+
   private
 
   def expense_params
