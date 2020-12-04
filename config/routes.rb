@@ -7,5 +7,6 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  get 'expenses/:id/checked', to: 'expenses#checked'
   resources :users, only: [:show]
 end

@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_11_29_064001) do
     t.integer "traveling_expense"
     t.integer "other"
     t.text "memo"
+    t.boolean "checked"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
