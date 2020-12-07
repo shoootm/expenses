@@ -47,18 +47,7 @@ class ExpensesController < ApplicationController
     @users = User.search(params[:keyword])
     @expenses = Expense.where(user_id: @users.ids)
   end
-  def checked
-    expense = Expense.find(params[:id])
-    if expense.checked
-      expense.update(checked: false)
-    else
-      expense.update(checked: true)
-    end
 
-    item = Expense.find(params[:id])
-    render json: { expense: item }
-  end
-3
   private
 
   def expense_params

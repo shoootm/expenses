@@ -5,11 +5,12 @@
     </div>
     <div class="header_right">
       <% if user_signed_in? %>
+        <%= link_to "お気に入り一覧", favorites_path(@expenses) %>
         マイページはこちらをクリック👉
         <%= link_to "ようこそ#{current_user.nickname}さん", user_path(current_user.id),  class:"current_user_nickname" %>
         <%= link_to "収支表作成", new_expense_path, class:"header_link" %>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"header_link" %>
-      <% else%>
+      <% else %>
         <%= link_to "新規登録", new_user_registration_path, class:"header_link" %>
         <%= link_to "ログイン", new_user_session_path, class:"header_link" %>
       <% end %>
@@ -82,7 +83,11 @@
       <p class="memo_title">メモ</p>
       <p class="memo"><%= expense.memo %></p>
     </div>
-<div class="test" data-id=<%= expense.id %> data-checked=<%= expense.checked %>>テスト</div>
+    お気に入り
+    <% if expense.favorite_counts.count >= 1 %>
+      <%= expense.favorite_counts[0]['count'] %>
+    <% end %>
+
 <% end %>
 <% end %>
 </div>
