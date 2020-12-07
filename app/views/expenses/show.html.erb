@@ -51,6 +51,9 @@
       <p class="memo_title">メモ</p>
       <p class="memo"><%= @expense.memo %></p>
     </div>
+
+    <div id="test" class="test" data-id=<%= @expense.id %> data-user_id=<%= current_user.id %>>テスト</div>
+
     <% if user_signed_in? && @expense.user.id == current_user.id %>
     <div class="expense_btn" >
       <%= link_to "編集", edit_expense_path(@expense.id) %>

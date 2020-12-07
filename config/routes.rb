@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  get 'expenses/:id/checked', to: 'expenses#checked'
+  get  'expenses/:expense_id/checked', to: 'favorites#checked'
+  get 'expenses/:expense_id/favorite_counts/:count', to: 'favorite_counts#count'
+  resources :favorites, only: [:index]
   resources :users, only: [:show]
 end

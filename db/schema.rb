@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_29_064001) do
+ActiveRecord::Schema.define(version: 2020_12_07_052719) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "text"
@@ -35,11 +35,28 @@ ActiveRecord::Schema.define(version: 2020_11_29_064001) do
     t.integer "traveling_expense"
     t.integer "other"
     t.text "memo"
-    t.boolean "checked"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_expenses_on_user_id"
+  end
+
+  create_table "favorite_counts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "count"
+    t.bigint "expense_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["expense_id"], name: "index_favorite_counts_on_expense_id"
+  end
+
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.boolean "checked"
+    t.bigint "user_id", null: false
+    t.bigint "expense_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["expense_id"], name: "index_favorites_on_expense_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -60,4 +77,7 @@ ActiveRecord::Schema.define(version: 2020_11_29_064001) do
   add_foreign_key "comments", "expenses"
   add_foreign_key "comments", "users"
   add_foreign_key "expenses", "users"
+  add_foreign_key "favorite_counts", "expenses"
+  add_foreign_key "favorites", "expenses"
+  add_foreign_key "favorites", "users"
 end

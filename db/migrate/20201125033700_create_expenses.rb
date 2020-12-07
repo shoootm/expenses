@@ -13,7 +13,6 @@ class CreateExpenses < ActiveRecord::Migration[6.0]
       t.integer :traveling_expense
       t.integer :other
       t.text :memo
-      t.boolean :checked
       t.references :user,           null: false, foreign_key: true
       t.timestamps
     end
