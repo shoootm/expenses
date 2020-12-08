@@ -13,8 +13,8 @@ class User < ApplicationRecord
   has_many :comments
   has_many :favorites
   def self.search(search)
-    if search != ""
-      User.where("prefecture LIKE(?)", "%#{search}%")
+    if search != ''
+      User.where('prefecture LIKE(?)', "%#{search}%")
     else
       User.all
     end

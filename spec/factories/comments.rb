@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :comment do
-    text { "kkkkkkk" }
+    text { 'kkkkkkk' }
     association :user
     association :expense
   end

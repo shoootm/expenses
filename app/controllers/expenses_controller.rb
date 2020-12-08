@@ -43,6 +43,7 @@ class ExpensesController < ApplicationController
       redirect_to root_path
     end
   end
+
   def search
     @users = User.search(params[:keyword])
     @expenses = Expense.where(user_id: @users.ids)
