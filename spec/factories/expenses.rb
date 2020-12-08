@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :expense do
     income { 111 }
-    food_expense    { 111 }
+    food_expense { 111 }
     necessities { 111 }
     clothes_expense { 111 }
     beauty_expense { 111 }
