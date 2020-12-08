@@ -15,7 +15,6 @@ class User < ApplicationRecord
   def self.search(search)
     if search != ""
       User.where("prefecture LIKE(?)", "%#{search}%")
-      #@expenses = @user.expenses
     else
       User.all
     end
