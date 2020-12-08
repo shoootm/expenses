@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Expense, type: :model do
-  describe Expense do
     before do
       @expense = FactoryBot.build(:expense)
     end
@@ -70,5 +69,4 @@ RSpec.describe Expense, type: :model do
         end
       end
     end
-  end
 end
