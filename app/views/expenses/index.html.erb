@@ -5,7 +5,7 @@
     </div>
     <div class="header_right">
       <% if user_signed_in? %>
-        <%= link_to "お気に入り一覧", favorites_path(@expenses) %>
+        <%= link_to "お気に入り一覧", favorites_path(@expenses), class:"favorite_link"  %>
         マイページはこちらをクリック👉
         <%= link_to "ようこそ#{current_user.nickname}さん", user_path(current_user.id),  class:"current_user_nickname" %>
         <%= link_to "収支表作成", new_expense_path, class:"header_link" %>
@@ -16,11 +16,14 @@
       <% end %>
     </div>
 </header>
-<div>
-  <%= form_with(url: search_expenses_path, local: true, method: :get, class: "search-form") do |form| %>
-    <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
-    <%= form.submit "検索", class: "search-btn" %>
-  <% end %>
+<div class="search-form">
+  <div class="search-right">
+    <h1 class="prefecture">都道府県で投稿を検索</h1>
+    <%= form_with(url: search_expenses_path, local: true, method: :get) do |form| %>
+      <%= form.text_field :keyword, placeholder: "(例)広島県", class: "search-input" %>
+      <%= form.submit "検索", class: "search-btn" %>
+    <% end %>
+  </div>
 </div>
 
 <div class="main_container">
@@ -28,61 +31,8 @@
 <% unless @expenses == [] %>
 <% @expenses.each do |expense| %>
 
-    <div class="expense_user_name">
-      <%= "#{expense.user.prefecture}"%>
-      <% unless expense.user.municipalitie == [] %>
-        <%= "#{expense.user.municipalitie}"%>
-      <% end %>在住　　
-      <%= link_to "#{expense.user.nickname}さんの収支表", expense_path(expense.id), class:"expense_show_link" %>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">収入</p>
-      <p class="money"><%= "#{expense.income}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">食費</p>
-      <p class="money"><%= "#{expense.food_expense}円"%></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">日用品</p>
-      <p class="money"><%= "#{expense.necessities}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">衣服</p>
-      <p class="money"><%= "#{expense.clothes_expense}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">美容</p>
-      <p class="money"><%= "#{expense.beauty_expense}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">交際費</p>
-      <p class="money"><%= "#{expense.entertainment_expense}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">医療費</p>
-      <p class="money"><%= "#{expense.medical_bill}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">教育費</p>
-      <p class="money"><%= "#{expense.education_cost}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">光熱費</p>
-      <p class="money"><%= "#{expense.utility_costs}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">旅費</p>
-      <p class="money"><%= "#{expense.traveling_expense}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">その他</p>
-      <p class="money"><%= "#{expense.other}円" %></p>
-    </div>
-    <div class="expense_memo">
-      <p class="memo_title">メモ</p>
-      <p class="memo"><%= expense.memo %></p>
-    </div>
+
+    <%= render partial: "expense", locals: { expense: expense } %>
     お気に入り
     <% if expense.favorite_counts.count >= 1 %>
       <%= expense.favorite_counts[0]['count'] %>

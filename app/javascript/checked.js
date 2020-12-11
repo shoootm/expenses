@@ -1,11 +1,11 @@
 function check() {
-  const test = document.getElementById("test");
+  const favorite = document.getElementById("favorite");
 
-  test.setAttribute("data-load", "true");
-  test.addEventListener("click", () => {
-    const testId = test.getAttribute("data-id");
+  favorite.setAttribute("data-load", "true");
+  favorite.addEventListener("click", () => {
+    const favoriteId = favorite.getAttribute("data-id");
     const XHR = new XMLHttpRequest();
-    XHR.open("GET", `/expenses/${testId}/checked`, true);
+    XHR.open("GET", `/expenses/${favoriteId}/checked`, true);
     XHR.responseType = "json";
     XHR.send();
     XHR.onload = () => {
@@ -15,13 +15,13 @@ function check() {
       }
       const item = XHR.response.expense;
       if (item.checked === true) {
-        test.setAttribute("data-checked", "true");
+        favorite.setAttribute("data-checked", "true");
       } else if (item.checked === false) {
-        test.removeAttribute("data-checked");
+        favorite.removeAttribute("data-checked");
       }
       const count = XHR.response.count;
       const XHRcount = new XMLHttpRequest();
-      XHRcount.open("GET", `/expenses/${testId}/favorite_counts/${count}`, true);
+      XHRcount.open("GET", `/expenses/${favoriteId}/favorite_counts/${count}`, true);
       XHRcount.send();
     };
   });

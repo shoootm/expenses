@@ -18,6 +18,14 @@ header{
   margin-right: 20px;
   color: white;
 }
+.favorite_link{
+  text-decoration: none;
+  color: white;
+  margin-right :30px;
+  border:1px solid white;
+  border-radius: 10px;
+  padding: 10px;
+}
 .current_user_nickname{
   text-decoration: none;
   display: inline-block;
@@ -33,10 +41,27 @@ header{
   border-radius: 10px;
   padding: 10px;
 }
+.search-form{
+  background-color: #d0712f;
+  color: white;
+  height: 60px;
+  display: flex;
+  align-items: center;
+
+}
+.search-right{
+  display: flex;
+}
+.prefecture {
+  margin:0 20px;
+}
+.search-input{
+
+}
 .main_container{
   display: flex;
   justify-content: center;
-  background-image: url(https://cdn.pixabay.com/photo/2014/07/06/13/55/calculator-385506_1280.jpg);
+  background-color: grey;
 }
 .expense_lists{
   margin-top: 100px;
@@ -55,11 +80,12 @@ header{
   text-align: center;
   padding: 30px 0;
   border-bottom:3px solid black ;
-  background-color: firebrick;
+  background-color:  #55c500;
 
 }
 .expense_show_link{
   text-decoration: none;
+  color: white;
 }
 .expense_title{
   display: inline-block;
