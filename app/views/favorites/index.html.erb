@@ -3,75 +3,16 @@
       <i class="fa fa-home"></i>
       お気に入り一覧
     </div>
-    <div class="header_right">
-      <%= "#{current_user.nickname}さん"%>
-    </div>
 </header>
 <div class="main_container">
 <div class="expense_lists">
 <% unless @expenses == [] %>
 <% @favorites.each do |favorite| %>
-
-    <div class="expense_user_name">
-      <%= "#{favorite.expense.user.prefecture}"%>
-      <% unless favorite.expense.user.municipalitie == [] %>
-        <%= "#{favorite.expense.user.municipalitie}"%>
-      <% end %>在住　　
-      <%= link_to "#{favorite.expense.user.nickname}さんの収支表", expense_path(favorite.expense.id), class:"expense_show_link" %>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">収入</p>
-      <p class="money"><%= "#{favorite.expense.income}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">食費</p>
-      <p class="money"><%= "#{favorite.expense.food_expense}円"%></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">日用品</p>
-      <p class="money"><%= "#{favorite.expense.necessities}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">衣服</p>
-      <p class="money"><%= "#{favorite.expense.clothes_expense}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">美容</p>
-      <p class="money"><%= "#{favorite.expense.beauty_expense}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">交際費</p>
-      <p class="money"><%= "#{favorite.expense.entertainment_expense}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">医療費</p>
-      <p class="money"><%= "#{favorite.expense.medical_bill}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">教育費</p>
-      <p class="money"><%= "#{favorite.expense.education_cost}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">光熱費</p>
-      <p class="money"><%= "#{favorite.expense.utility_costs}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">旅費</p>
-      <p class="money"><%= "#{favorite.expense.traveling_expense}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">その他</p>
-      <p class="money"><%= "#{favorite.expense.other}円" %></p>
-    </div>
-    <div class="expense_memo">
-      <p class="memo_title">メモ</p>
-      <p class="memo"><%= favorite.expense.memo %></p>
-    </div>
-    お気に入り
-    <% if favorite.expense.favorite_counts.count >= 1 %>
-      <%= favorite.expense.favorite_counts[0]['count'] %>
-    <% end %>
-
+  <%= render partial: "expenses/expense", locals: { expense: favorite.expense } %>
+  お気に入り
+  <% if favorite.expense.favorite_counts.count >= 1 %>
+    <%= favorite.expense.favorite_counts[0]['count'] %>
+  <% end %>
 <% end %>
 <% end %>
 </div>

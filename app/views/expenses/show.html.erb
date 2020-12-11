@@ -1,58 +1,15 @@
+<header class="top_page_header">
+    <div class="header_left">
+      <i class="fa fa-home"></i>
+      詳細ページ
+    </div>
+</header>
 <div class="main_container">
 <div class="expense_lists">
-    <div class="expense_user_name">
-      <%= link_to "#{@expense.user.nickname}さんの収支表", class:"expense_show_link" %>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">収入</p>
-      <p class="money"><%= "#{@expense.income}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">食費</p>
-      <p class="money"><%= "#{@expense.food_expense}円"%></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">日用品</p>
-      <p class="money"><%= "#{@expense.necessities}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">衣服</p>
-      <p class="money"><%= "#{@expense.clothes_expense}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">美容</p>
-      <p class="money"><%= "#{@expense.beauty_expense}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">交際費</p>
-      <p class="money"><%= "#{@expense.entertainment_expense}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">医療費</p>
-      <p class="money"><%= "#{@expense.medical_bill}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">教育費</p>
-      <p class="money"><%= "#{@expense.education_cost}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">光熱費</p>
-      <p class="money"><%= "#{@expense.utility_costs}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">旅費</p>
-      <p class="money"><%= "#{@expense.traveling_expense}円" %></p>
-    </div>
-    <div class="expense_list">
-      <p class="expense_title">その他</p>
-      <p class="money"><%= "#{@expense.other}円" %></p>
-    </div>
-    <div class="expense_memo">
-      <p class="memo_title">メモ</p>
-      <p class="memo"><%= @expense.memo %></p>
-    </div>
 
-    <div id="test" class="test" data-id=<%= @expense.id %> data-user_id=<%= current_user.id %>>テスト</div>
+    <%= render partial: "expense", locals: { expense: @expense } %>
+
+    <div id="favorite" data-id=<%= @expense.id %> data-user_id=<%= current_user.id %>>お気に入り登録</div>
 
     <% if user_signed_in? && @expense.user.id == current_user.id %>
     <div class="expense_btn" >
@@ -75,7 +32,7 @@
       <% if @comments %>
         <% @comments.each do |comment| %>
           <p>
-            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+            <strong><%= "#{comment.user.nickname}さん" %>：</strong>
             <%= comment.text %>
             <% if user_signed_in? && comment.user_id == current_user.id %>
               <%= link_to "削除", expense_comment_path(comment.expense_id, comment.id), method: :delete %>
